@@ -37,16 +37,38 @@ function fetchData() {
         console.log(weatherData)
         
         issueContainer.append(city);
+        issueContainer.append(weatherIconElement);
         issueContainer.append(highTempK);
         issueContainer.append(lowTempK);
         issueContainer.append(windSpeed);
         issueContainer.append(humidity);
         // issueContainer.append(uvIndex);
-        issueContainer.append(weatherIconElement);
-
-            inputField.value = ''
-
+        
+        inputField.value = ''
+        
+    })
+    
+    
+    function displayForecast(cityName) {
+        var cityName = inputField.value
+        var apiKey = 'b04cc2de859ae3c5c525426c1b0511bb'
+        var requestUrl5Day = 'https://api.openweathermap.org/data/2.5/forecast?q=' + cityName + '&appid=' + apiKey
+        
+        fetch(requestUrl5Day)
+        .then(function (response) {
+            return response.json()
         })
+        .then(function(forecastData) {
+    
+            console.log(forecastData)
+    
+        })
+
+
+    }
+
+    displayForecast();
+
 }
 
 button.addEventListener('click', fetchData)
