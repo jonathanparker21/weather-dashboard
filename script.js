@@ -1,3 +1,5 @@
+// $(document).ready(function () {
+
 var inputField = document.querySelector('#city')
 var button = document.querySelector('#get-weather')
 var issueContainer = document.getElementById('forecast');
@@ -61,6 +63,26 @@ function fetchData() {
         .then(function(forecastData) {
     
             console.log(forecastData)
+
+            var days = forecastData.list
+            weatherIcon = forecastData.list[0].weather[0].icon;
+            forecastIcon = 'http://openweathermap.org/img/w/' + weatherIcon + '.png'
+
+            for (let i = 0; i < 5; i++) {
+                
+                var column = $('<div>').addClass('col-md-4');
+                var card = $('<div>').addClass('card');
+                var cardBody = $('<div>').addClass('card-body');
+                var cardDate = $('<h4>').addClass('card-title').text(days[i].dt_txt);
+                // var cardIcon = $('<img>').('src', forecastIcon).text(days[i].forecastIcon)
+                var cardTemp = $('<p>').addClass('card-text').text('Temp: ' + days[i].main.temp + ' F')
+                var cardWind = $('<p>').addClass('card-text').text('Wind: ' + days[i].wind.speed.toFixed(0) + ' MPH')
+                var cardHumidity = $('<p>').addClass('card-text').text('Humiditiy: ' + days[i].main.humidity + ' %')
+                
+                column.append(card.append(cardBody.append(cardDate, cardTemp, cardWind, cardHumidity)));
+                $('#forecast').append(column)
+
+            }
     
         })
 
@@ -72,3 +94,5 @@ function fetchData() {
 }
 
 button.addEventListener('click', fetchData)
+
+// });
