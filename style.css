@@ -1,0 +1,16 @@
+.cards {
+    border: 5px solid blue;
+    border: 0.25em solid grey;
+}
+
+.header {
+    display: flex;
+    justify-content: center;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    text-decoration: underline;
+}
+
+#city {
+    margin-left: 40%;
+}
