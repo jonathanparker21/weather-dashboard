@@ -10,7 +10,7 @@ Our task this week was to create a weather app user a server-side API that allow
 
 ## Link to Deployed App
 
-
+https://jonathanparker21.github.io/weather-dashboard/
 
 ## Credits
 @2022 Jonathan Parker
